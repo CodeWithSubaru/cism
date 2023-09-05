@@ -1,0 +1,72 @@
+---
+import MainHeader from "../components/MainHeader.astro";
+import Layout from "../layouts/Layout.astro";
+import MiniLayout from "../layouts/MiniLayout.astro";
+import Card from "../components/Card.astro";
+
+const projects = [
+  {
+    iteration: "1",
+    yearCreatedAt: "(2023)",
+    headerTitle: "Dealease",
+    description:
+      "An e-commerce website application for fishermen and fish farmers to help them market their fish products in other places using the Dealease application.",
+  },
+  {
+    iteration: "2",
+    yearCreatedAt: "(2023)",
+    headerTitle: "Faraway",
+    description:
+      "A packing list application that lists all the necessary things to bring before going to your desired destination.",
+  },
+  {
+    iteration: "3",
+    yearCreatedAt: "(2022)",
+    headerTitle: "Advice App",
+    description:
+      "An application that randomly shows some advice using Advice Slip",
+  },
+  {
+    iteration: "4",
+    yearCreatedAt: "(2021)",
+    headerTitle: "CoffeeCode",
+    description:
+      "CoffeeCode was created for programmers. This website allows authors to post their knowledge about the latest trends in programming",
+  },
+];
+---
+
+<Layout title="Projects">
+  <MiniLayout className="mt-24">
+    <div class="overflow-hidden relative">
+      <MainHeader>Projects</MainHeader>
+
+      <div
+        class="relative grid grid-cols-1 md:grid-cols-2 grid-row-5 gap-4 px-2"
+      >
+        <div class="hidden sm:flex gap-2 absolute left-96 -top-8">
+          <img
+            src="/assets/icon/curve-arrow.svg"
+            class="rotate-[30deg] h-12 w-12"
+            alt="curve-arrow"
+          />
+          <p class="text-[#ffc25c] text-xs md:text-base hover:animation-ping">
+            Hover every images to see the effect 🎇
+          </p>
+        </div>
+        {
+          projects.map((project) => (
+            <Card
+              iteration={project.iteration}
+              yearCreatedAt={project.yearCreatedAt}
+              projectHeaderTitle={project.headerTitle}
+              projectDescription={project.description}
+            />
+          ))
+        }
+      </div>
+    </div>
+  </MiniLayout>
+
+  <style></style>
+</Layout>

@@ -1,0 +1,51 @@
+---
+import MainHeader from "../components/MainHeader.astro";
+import Layout from "../layouts/Layout.astro";
+import MiniLayout from "../layouts/MiniLayout.astro";
+
+const currentSkills = [
+  {
+    title: "Front-End",
+    technologies: ["html", "css3", "sass", "js", "typescript"],
+  },
+  {
+    title: "Front-End Framework",
+    technologies: ["react", "vue", "tailwind", "bootstrap", "astro"],
+  },
+  {
+    title: "Back-End",
+    technologies: ["php", "mysql"],
+  },
+  {
+    title: "Back-End Framework",
+    technologies: ["laravel"],
+  },
+  {
+    title: "Other Tools",
+    technologies: ["vite", "git", "github"],
+  },
+];
+---
+
+<Layout title="Skills">
+  <MiniLayout className="mt-24">
+    <div class="overflow-hidden relative px-4">
+      {
+        currentSkills.map((item) => (
+          <>
+            <MainHeader>Skills: {item.title}</MainHeader>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 justify-items-center mb-10 p-5">
+              {item.technologies.map((tech) => (
+                <img
+                  src={`/assets/icon/${tech}.svg`}
+                  alt={tech}
+                  class="inline-block h-32 w-32 hover:scale-125 transition-all"
+                />
+              ))}
+            </div>
+          </>
+        ))
+      }
+    </div>
+  </MiniLayout>
+</Layout>

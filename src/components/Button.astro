@@ -1,0 +1,29 @@
+---
+interface Props {
+  link?: string;
+  fileName?: string;
+  classOrAnimate?: string | boolean;
+  button?: boolean;
+}
+
+const { link, fileName, classOrAnimate, button } = Astro.props;
+
+const className = `uppercase cursor-pointer text-[#ffc25c] outline outline-[#ffc25c] hover:outline-white hover:text-white px-4 py-3 rounded-md inline-block transition-all group ${
+  typeof classOrAnimate === "string" ? classOrAnimate : "animate-bounce"
+}`;
+---
+
+{
+  button ? (
+    <button class={className}>
+      <slot />
+    </button>
+  ) : (
+    <a href={link} class={className} download={fileName}>
+      <slot />
+      <span class="group-hover:translate-x-1 transition-all inline-block">
+        &rarr;
+      </span>
+    </a>
+  )
+}

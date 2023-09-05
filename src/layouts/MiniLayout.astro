@@ -1,0 +1,57 @@
+---
+import Nav from "../components/Nav.astro";
+
+interface Props {
+  className?: string;
+}
+const { className } = Astro.props;
+---
+
+<main class="max-w-screen-lg m-auto">
+  <Nav />
+  <div class={className}>
+    <slot />
+  </div>
+</main>
+
+<style is:global>
+  @tailwind base;
+  @tailwind components;
+  @tailwind utilities;
+
+  :root {
+    --primary: #333646;
+    --primary-alt: #424451;
+    --secondary: #252734;
+    --accent: #ffc25c;
+    --accent-alt: #edb046;
+    --text: #666874;
+    --text-alt: #80818c;
+    --outline-color: transparent;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    color: var(--text);
+  }
+
+  body {
+    font-family: "Inter", sans-serif;
+    background: var(--primary);
+  }
+
+  code {
+    font-family:
+      Menlo,
+      Monaco,
+      Lucida Console,
+      Liberation Mono,
+      DejaVu Sans Mono,
+      Bitstream Vera Sans Mono,
+      Courier New,
+      monospace;
+  }
+</style>

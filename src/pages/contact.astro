@@ -1,0 +1,147 @@
+---
+import type { SyntheticExpression } from "typescript";
+import Button from "../components/Button.astro";
+import MainHeader from "../components/MainHeader.astro";
+import Paragraph from "../components/Paragraph.astro";
+import SubHeader from "../components/SubHeader.astro";
+import Layout from "../layouts/Layout.astro";
+import MiniLayout from "../layouts/MiniLayout.astro";
+import emailjs from "@emailjs/browser";
+
+const TEMPLATE_ID: string = "__ejs-test-mail-service__";
+const SERVICE_ID: string = "service_fb8e1fh";
+const PUBLIC_KEY: string = "A5rsOdG5LzcIHKVv9";
+
+const sendEmail = async (e: {
+  preventDefault: () => void;
+  target: string | HTMLFormElement;
+}) => {
+  e.preventDefault();
+  try {
+    const response = await emailjs.sendForm(
+      SERVICE_ID,
+      TEMPLATE_ID,
+      e.target,
+      PUBLIC_KEY
+    );
+
+    console.log("SUCCESS!", response.text);
+  } catch (error) {
+    console.log("FAILED...", error.text);
+  }
+};
+---
+
+<Layout title="Skills">
+  <MiniLayout className="mt-24">
+    <div class="px-4 py-10">
+      <div class="w-auto md:w-1/2 mx-auto">
+        <MainHeader className="text-center" style="color: var(--accent)">
+          Contact Me
+        </MainHeader>
+        <form
+          class="contact-form bg-[var(--secondary)] rounded px-5 py-8 relative overflow-hidden"
+          onsubmit="
+          sendEmail(e)
+          "
+        >
+          <span
+            class="absolute -top-52 -right-16 -z-1 inline-block text-[rgba(102,104,116,0.1)] text-[20rem] rotate-[24deg]"
+            >+</span
+          >
+
+          <span
+            class="absolute left-44 top-20 inline-block text-[rgba(102,104,116,0.1)] text-[12rem] rotate-[30deg]"
+            >o</span
+          >
+
+          <SubHeader className="md:mb-[0]" style="color: var(--accent)">
+            Let's talk
+          </SubHeader>
+          <Paragraph>Discuss business with me</Paragraph>
+
+          <div class="relative rounded-md">
+            <label for="name" class="block text-xs">Name</label>
+            <input
+              type="text"
+              name="name"
+              placeholder="Eugene Viktor"
+              class="input w-full rounded"
+              autofocus
+            />
+          </div>
+
+          <div class="relative rounded-md">
+            <label for="email" class="block text-xs">Email</label>
+            <input
+              type="email"
+              name="email"
+              placeholder="youremail@gmail.com"
+              class="input w-full rounded"
+            />
+          </div>
+
+          <div class="relative rounded-md">
+            <label for="message" class="block text-xs">Message</label>
+            <textarea
+              name="message"
+              id="message"
+              class="input resize-none w-full rounded"
+              placeholder="Your message "></textarea>
+          </div>
+
+          <Button
+            button
+            classOrAnimate="animate-none w-full text-center bg-[var(--accent)] border-[0] text-white outline outline-3 outline-offset-4 outline-[var(--accent)] hover:bg-[var(--accent-alt)] hover:outline-[var(--accent-alt)]"
+          >
+            Sign In
+          </Button>
+        </form>
+      </div>
+    </div>
+  </MiniLayout>
+</Layout>
+
+<style>
+  .contact-form {
+    outline: 3px solid var(--outline-color);
+    outline-offset: 4px;
+  }
+
+  .contact-form {
+    --outline-color: var(--secondary);
+  }
+
+  label {
+    margin-bottom: 0.2rem;
+    color: var(--text);
+  }
+
+  form > div {
+    margin-bottom: 1.8rem;
+    padding: 1rem;
+    padding-bottom: 0;
+  }
+
+  form > div:has(input:focus),
+  form > div:has(textarea:focus) {
+    outline: 1px solid var(--primary);
+    outline-offset: 4px;
+  }
+
+  form > div,
+  .input {
+    background: var(--primary);
+  }
+
+  .input {
+    outline: none;
+    border: none;
+    color: var(--text-alt);
+    padding-block: 1rem;
+  }
+
+  .input::placeholder {
+    color: var(--text);
+  }
+</style>

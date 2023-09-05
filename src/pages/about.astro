@@ -1,0 +1,105 @@
+---
+import Button from "../components/Button.astro";
+import MainHeader from "../components/MainHeader.astro";
+import Paragraph from "../components/Paragraph.astro";
+import SubHeader from "../components/SubHeader.astro";
+import Layout from "../layouts/Layout.astro";
+import MiniLayout from "../layouts/MiniLayout.astro";
+---
+
+<Layout title="About Me">
+  <MiniLayout className="mt-24">
+    <div class="overflow-hidden">
+      <div
+        class="relative flex flex-col md:flex-row gap-x-10 text-center md:text-left mt-15 md:mt-20 px-5"
+      >
+        <div class="space-y-14 mb-20 md:mb-0">
+          <div>
+            <MainHeader>about</MainHeader>
+            <SubHeader>My Journey</SubHeader>
+            <Paragraph className="indent-8">
+              I was fascinated with programming during my senior high when I
+              took my first IT course. From that moment, I was hooked. I found
+              joy in writing lines of code and solving problems. I am eager to
+              learn and gain experience in real-world scenarios that will
+              enhance and develop my skills and knowledge in programming.
+            </Paragraph>
+          </div>
+          <div>
+            <SubHeader>My Education</SubHeader>
+            <Paragraph className="indent-8">
+              I recently graduated from Colegio De San Pascual Baylon, where I
+              pursued a Bachelor of Science in Computer Science.
+            </Paragraph>
+          </div>
+        </div>
+        <!-- Start: Icon -->
+
+        <span
+          class="absolute left-44 top-20 block text-[rgba(102,104,116,0.1)] text-[12rem] rotate-[30deg]"
+          >o</span
+        >
+
+        <span
+          class="absolute bottom-48 right-10 block text-[rgba(102,104,116,0.1)] text-[12rem] rotate-[35deg]"
+          >+</span
+        >
+
+        <!-- End: Icon -->
+
+        <div class="flex flex-col -translate-y-16">
+          <div class="flex justify-center items-start align-top">
+            <div class="text-[#666874] text-[12rem] align-top">&lt;</div>
+            <div class="text-[#666874] text-[12rem] align-top">&#47;</div>
+            <div class="text-[#666874] text-[12rem] align-top">&gt;</div>
+          </div>
+          <div
+            class="flex flex-col md:flex-row item-start md:items-center gap-5 mb-20"
+          >
+            <div class="flex justify-center items-center">
+              <span class="plus inline-block text-white text-7xl">+</span>
+              <div class="flex items-center space-x-3">
+                <h3 class="text-8xl font-bold">4</h3>
+                <p class="text-white">
+                  Years of Experience <br /><strong
+                    class="text-2xl tracking-wide"
+                  >
+                    Programming</strong
+                  >
+                </p>
+              </div>
+            </div>
+
+            <div class="flex justify-center items-center">
+              <span class="plus inline-block text-white text-7xl">+</span>
+              <div class="flex items-center space-x-3">
+                <h3 class="text-8xl font-bold">4</h3>
+                <p class="text-white">
+                  Projects <br /><strong
+                    class="text-2xl whitespace-nowrap tracking-wide"
+                  >
+                    Built</strong
+                  >
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="text-center">
+            <Button classOrAnimate={true} link="/projects">Projects</Button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </MiniLayout>
+
+  <style>
+    nav {
+      background: var(--secondary) !important;
+    }
+
+    h3,
+    .plus {
+      color: var(--accent);
+    }
+  </style>
+</Layout>

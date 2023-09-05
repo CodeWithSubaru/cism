@@ -1,0 +1,67 @@
+---
+import Layout from "../layouts/Layout.astro";
+import MiniLayout from "../layouts/MiniLayout.astro";
+import MainHeader from "../components/MainHeader.astro";
+import SubHeader from "../components/SubHeader.astro";
+import Paragraph from "../components/Paragraph.astro";
+import SocialLink from "../components/SocialLink.astro";
+import Button from "../components/Button.astro";
+---
+
+<Layout title="Home">
+  <MiniLayout>
+    <div
+      class="mt-28 md:mt-32 flex flex-col gap-32 justify-center max-w-5xl text-white px-4 py-10 md:flex-row"
+    >
+      <div class="">
+        <div class="relative">
+          <h1
+            class="text-6xl sm:text-7xl md:text-8xl font-extrabold z-50 block"
+          >
+            Hi I'm <br /> Francis <span class="whitespace-nowrap">Mag-isa</span>
+          </h1>
+          <img
+            src="/assets/img/male-with-jacket.png"
+            class="absolute md:inset-x-1/2 -right-0 -top-11 bottom-0 -z-10 w-1/2 md:w-max"
+            alt="male with jacket"
+          />
+          <div id="social-links" class="flex space-x-5 mt-14">
+            <SocialLink
+              link="https://www.facebook.com/francis.cloyd.9"
+              source="/assets/img/facebook.svg"
+              alt="facebook"
+            />
+            <SocialLink
+              link="https://www.linkedin.com/in/franciscloydm/"
+              source="/assets/img/linkedin.svg"
+              alt="linkedin"
+            />
+            <SocialLink
+              link="https://github.com/CodeWithSubaru"
+              source="/assets/img/github.svg"
+              alt="github"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="md:px-10 text-center md:text-left p-2 md:pl-20">
+        <MainHeader>introduction</MainHeader>
+        <SubHeader>Web Developer, Programmer</SubHeader>
+        <Paragraph className="mb-14">
+          Hi I'm Francis Cloyd Mag-isa. A programmer and web developer with a
+          passion for crafting digital experiences
+        </Paragraph>
+        <div class="flex space-x-6">
+          <Button
+            classOrAnimate={true}
+            link="/assets/pdf/resume.pdf"
+            fileName="Francis Cloyd V. Mag-isa - Resume.pdf"
+          >
+            Resume
+          </Button>
+          <Button classOrAnimate={true} link="/about">About Me</Button>
+        </div>
+      </div>
+    </div>
+  </MiniLayout>
+</Layout>

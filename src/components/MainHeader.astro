@@ -1,0 +1,21 @@
+<strong class="head font-bold uppercase mb-2 justify-center md:justify-start"
+  ><slot /></strong
+>
+
+<style>
+  strong {
+    display: flex;
+    align-items: center;
+    column-gap: 5px;
+    color: var(--text-alt);
+  }
+
+  .head::before,
+  .head::after {
+    content: "";
+    display: inline-block;
+    height: 3px;
+    background: var(--text);
+    width: 10px;
+  }
+</style>

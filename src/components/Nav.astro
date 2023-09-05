@@ -1,0 +1,153 @@
+---
+import Logo from "./Logo.astro";
+import NavLink from "./NavLink.astro";
+const pathname = Astro.url.pathname;
+const currentPath = pathname.slice(1);
+---
+
+<nav class="py-5 px-2 fixed top-0 inset-x-0 z-20">
+  <div class="max-w-7xl mx-auto flex items-center justify-between">
+    <Logo />
+    <div class="hidden md:flex space-x-20 text-white">
+      <NavLink className={currentPath === "" ? "current" : ""} link="/">
+        Home
+      </NavLink>
+      <NavLink
+        className={currentPath === "about" ? "current" : ""}
+        link="/about"
+      >
+        About
+      </NavLink>
+      <NavLink
+        className={currentPath === "projects" ? "current" : ""}
+        link="/projects"
+      >
+        Projects
+      </NavLink>
+      <NavLink
+        className={currentPath === "skills" ? "current" : ""}
+        link="/skills"
+      >
+        Skills
+      </NavLink>
+      <NavLink
+        className={currentPath === "contact" ? "current" : ""}
+        link="/contact"
+      >
+        Contact Me
+      </NavLink>
+    </div>
+
+    <!-- Mobile Nav-->
+    <div class="relative md:hidden z-20" aria-label="toggle-menu">
+      <div
+        class="flex flex-col justify-center items-center bg-[#ffc25c] rounded-full w-10 h-10"
+      >
+        <div class="menu overflow-hidden">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </div>
+    <div
+      class="flex flex-col justify-center items-center gap-y-10 md:hidden bg-white absolute inset-0 z-10 transition-all duration-500"
+      aria-hidden="true"
+    >
+      <NavLink className={currentPath === "" ? "current" : ""} link="/">
+        Home
+      </NavLink>
+      <NavLink
+        className={currentPath === "about" ? "current" : ""}
+        link="/about"
+      >
+        About
+      </NavLink>
+      <NavLink
+        className={currentPath === "projects" ? "current" : ""}
+        link="/projects"
+      >
+        Projects
+      </NavLink>
+      <NavLink
+        className={currentPath === "skills" ? "current" : ""}
+        link="/skills"
+      >
+        Skills
+      </NavLink>
+      <NavLink
+        className={currentPath === "contact" ? "current" : ""}
+        link="/contact"
+      >
+        Contact Me
+      </NavLink>
+    </div>
+  </div>
+</nav>
+
+<style>
+  nav {
+    background: var(--primary);
+  }
+
+  .menu > span {
+    display: flex;
+    margin-block: 4px;
+    width: 20px;
+    height: 2px;
+    background: white;
+  }
+
+  .menu span:nth-child(2) {
+    width: 15px;
+  }
+
+  .menu span:nth-child(3) {
+    width: 10px;
+  }
+
+  [aria-hidden="false"] {
+    display: flex;
+    opacity: 1;
+    transform: translateX(0);
+    position: fixed;
+    height: 100vh;
+    width: 100%;
+  }
+
+  [aria-hidden="true"] {
+    opacity: 0;
+    overflow: hidden;
+    transform: translateX(100%);
+    width: 0;
+    height: 0;
+  }
+</style>
+
+<script>
+  const menu = document.querySelector("[aria-label='toggle-menu']");
+  const navLinks = document.querySelector("[aria-hidden='true']");
+  const nav = document.querySelector("nav");
+
+  const setNavLinks = (val: string) =>
+    navLinks.setAttribute("aria-hidden", val);
+
+  const toggle = () => {
+    if (navLinks.getAttribute("aria-hidden") === "true") setNavLinks("false");
+    else setNavLinks("true");
+  };
+
+  menu.addEventListener("click", toggle);
+
+  window.addEventListener("scroll", () => {
+    const height = window.scrollY;
+    if (height > 28) nav.classList.add("shadow-lg");
+    else nav.classList.remove("shadow-lg");
+  });
+
+  window.addEventListener("resize", () => {
+    const width = window.innerWidth;
+
+    if (width > 767) setNavLinks("true");
+  });
+</script>
