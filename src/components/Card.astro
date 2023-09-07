@@ -13,28 +13,28 @@ const { projectHeaderTitle, yearCreatedAt, iteration, projectDescription } =
   Astro.props;
 ---
 
-<div class="border-spacing-12 bg-[#252734] rounded-md shadow-lg p-4 group">
-  <div class="relative overflow-hidden">
+<div class="border-spacing-12 bg-[#252734] rounded-md shadow-lg p-4 mb-2 group">
+  <div class="relative">
     <img
       src=`/assets/img/${projectHeaderTitle.toLowerCase()}.png`
       class="h-60 w-full"
-      alt="Dealease"
+      alt={projectHeaderTitle}
     />
     <div
-      class="absolute flex flex-col justify-center px-4 inset-0 z-10 group-hover:bg-[#333646] transition-all"
+      class="static md:absolute flex flex-col px-4 py-8 inset-0 z-10 group-hover:bg-[#333646] transition-all"
     >
       <span
-        class="absolute right-0 text-[15rem] text-[rgba(102,104,116,0.1)] font-extrabold opacity-0 group-hover:opacity-100 transition-all"
+        class="absolute right-0 -translate-y-10 text-[15rem] text-[rgba(102,104,116,0.1)] font-extrabold opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all"
         >{iteration}</span
       >
       <SubHeader
-        className="opacity-0 group-hover:opacity-100 transition-all z-10 flex gap-x-1"
+        className="opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all z-10 flex gap-x-1"
       >
         {projectHeaderTitle}
         <span class="text-[#ffc25c]"> {yearCreatedAt}</span>
       </SubHeader>
       <Paragraph
-        className="opacity-0 group-hover:opacity-100 transition-all indent-3"
+        className="opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all indent-3"
       >
         {projectDescription}
       </Paragraph>
@@ -42,13 +42,13 @@ const { projectHeaderTitle, yearCreatedAt, iteration, projectDescription } =
         <a
           target="_blank"
           href="github.com"
-          class="hover:underline hover:underline-offset-2 cursor-pointer opacity-0 group-hover:opacity-100 transition-all text-[#ffc25c]"
+          class="hover:underline hover:underline-offset-2 cursor-pointer opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all text-[#ffc25c]"
           >Github <span class="inline-block -rotate-45">-></span></a
         >
         <a
           target="_blank"
           href="github.com"
-          class="hover:underline hover:underline-offset-2 cursor-pointer opacity-0 group-hover:opacity-100 transition-all text-[#ffc25c]"
+          class="hover:underline hover:underline-offset-2 cursor-pointer opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all text-[#ffc25c]"
           >Demo <span class="inline-block -rotate-45">-></span></a
         >
       </div>

@@ -1,5 +1,4 @@
 ---
-import type { SyntheticExpression } from "typescript";
 import Button from "../components/Button.astro";
 import MainHeader from "../components/MainHeader.astro";
 import Paragraph from "../components/Paragraph.astro";
@@ -12,11 +11,7 @@ const TEMPLATE_ID: string = "__ejs-test-mail-service__";
 const SERVICE_ID: string = "service_fb8e1fh";
 const PUBLIC_KEY: string = "A5rsOdG5LzcIHKVv9";
 
-const sendEmail = async (e: {
-  preventDefault: () => void;
-  target: string | HTMLFormElement;
-}) => {
-  e.preventDefault();
+if (Astro.request.method === "POST") {
   try {
     const response = await emailjs.sendForm(
       SERVICE_ID,
@@ -26,10 +21,11 @@ const sendEmail = async (e: {
     );
 
     console.log("SUCCESS!", response.text);
+    alert("Hi");
   } catch (error) {
     console.log("FAILED...", error.text);
   }
-};
+}
 ---
 
 <Layout title="Skills">
@@ -41,9 +37,7 @@ const sendEmail = async (e: {
         </MainHeader>
         <form
           class="contact-form bg-[var(--secondary)] rounded px-5 py-8 relative overflow-hidden"
-          onsubmit="
-          sendEmail(e)
-          "
+          method="POST"
         >
           <span
             class="absolute -top-52 -right-16 -z-1 inline-block text-[rgba(102,104,116,0.1)] text-[20rem] rotate-[24deg]"
