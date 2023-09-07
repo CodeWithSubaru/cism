@@ -6,14 +6,16 @@ import SubHeader from "../components/SubHeader.astro";
 import Paragraph from "../components/Paragraph.astro";
 import SocialLink from "../components/SocialLink.astro";
 import Button from "../components/Button.astro";
+
+import animate from "../constants";
 ---
 
 <Layout title="Home">
   <MiniLayout>
     <div
-      class="mt-28 md:mt-32 flex flex-col gap-32 justify-center max-w-5xl text-white px-4 py-10 md:flex-row"
+      class="mt-28 md:mt-32 flex flex-col gap-32 justify-center max-w-5xl text-white px-4 py-10 md:flex-row overflow-hidden"
     >
-      <div class="">
+      <div class=`${animate}fadeInLeft `>
         <div class="relative">
           <h1
             class="text-6xl sm:text-7xl md:text-8xl font-extrabold z-50 block"
@@ -44,7 +46,9 @@ import Button from "../components/Button.astro";
           </div>
         </div>
       </div>
-      <div class="md:px-10 text-center md:text-left p-2 md:pl-20">
+      <div
+        class=`md:px-10 text-center md:text-left p-2 md:pl-20 ${animate}fadeInRight animate__delay-2s`
+      >
         <MainHeader>introduction</MainHeader>
         <SubHeader>Web Developer, Programmer</SubHeader>
         <Paragraph className="mb-14">

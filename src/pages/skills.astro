@@ -3,6 +3,8 @@ import MainHeader from "../components/MainHeader.astro";
 import Layout from "../layouts/Layout.astro";
 import MiniLayout from "../layouts/MiniLayout.astro";
 
+import animate from "../constants";
+
 const currentSkills = [
   {
     title: "Front-End",
@@ -32,9 +34,9 @@ const currentSkills = [
     <div class="overflow-hidden relative px-4">
       {
         currentSkills.map((item) => (
-          <>
+          <div>
             <MainHeader>Skills: {item.title}</MainHeader>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 justify-items-center mb-10 p-5">
+            <div class=`grid grid-cols-2 md:grid-cols-4 gap-8 justify-items-center mb-10 p-5 ${animate}fadeInDown `>
               {item.technologies.map((tech) => (
                 <img
                   src={`/assets/icon/${tech}.svg`}
@@ -43,7 +45,7 @@ const currentSkills = [
                 />
               ))}
             </div>
-          </>
+          </div>
         ))
       }
     </div>

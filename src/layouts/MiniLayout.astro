@@ -1,5 +1,6 @@
 ---
 import Nav from "../components/Nav.astro";
+import "animate.css";
 
 interface Props {
   className?: string;
@@ -28,6 +29,8 @@ const { className } = Astro.props;
     --text: #666874;
     --text-alt: #80818c;
     --outline-color: transparent;
+
+    --animate-delay: 100ms;
   }
 
   * {
