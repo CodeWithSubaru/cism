@@ -5,12 +5,13 @@ import Paragraph from "../components/Paragraph.astro";
 import SubHeader from "../components/SubHeader.astro";
 import Layout from "../layouts/Layout.astro";
 import MiniLayout from "../layouts/MiniLayout.astro";
-import Button from "../components/Button.astro";
 
 import animate, { SERVICE_ID, TEMPLATE_ID, PUBLIC_KEY } from "../constants";
 import emailjs from "@emailjs/browser";
 
-if (Astro.request.method === "POST") {
+const handleSubmit = async (e) => {
+  e.preventDefault();
+
   try {
     const response = await emailjs.sendForm(
       SERVICE_ID,
@@ -20,11 +21,10 @@ if (Astro.request.method === "POST") {
     );
 
     console.log("SUCCESS!", response.text);
-    alert("Hi");
   } catch (error) {
     console.log("FAILED...", error.text);
   }
-}
+};
 ---
 
 <Layout title="Skills">
@@ -35,18 +35,19 @@ if (Astro.request.method === "POST") {
           Contact Me
         </MainHeader>
 
-        <div class="relative">
+        <div class="relative group">
           <small class="block text-sm font-extrabold mb-1"> Phone</small>
           <input
-            class="inputCopy bg-[var(--secondary)] w-full pl-5 py-3 pr-10 rounded-lg mb-3 inline-block cursor-pointer overflow-y-auto outline-none"
+            class="inputCopy group-hover:scale-95 bg-[var(--secondary)] w-full pl-5 py-3 pr-10 rounded-lg mb-3 inline-block cursor-pointer overflow-y-auto outline-none"
             value="09678609851"
+            disabled
           />
           <div
-            class="iconClip absolute right-1 top-1/2 -translate-y-[40%] px-2 bg-[var(--secondary)]"
+            class="iconClip group-hover:scale-75 group-hover:rounded-full transition-all group-hover:p-0 absolute right-1 top-1/2 -translate-y-[35%] px-2 bg-[var(--secondary)]"
           >
             <!--?xml version="1.0" encoding="utf-8"?--><!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
             <svg
-              class="h-8 w-8 bg-[var(--primary)] p-1 rounded cursor-pointer"
+              class="h-8 w-8 group-hover:scale-150 bg-[var(--primary)] p-1 rounded cursor-pointer shadow-xl"
               viewBox="0 0 24 24"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -61,18 +62,19 @@ if (Astro.request.method === "POST") {
           </div>
         </div>
 
-        <div class="relative mb-5">
+        <div class="relative mb-5 group">
           <small class="block text-sm font-extrabold mb-1"> Email</small>
           <input
-            class="inputCopy bg-[var(--secondary)] w-full pl-5 py-3 pr-10 rounded-lg mb-3 inline-block cursor-pointer overflow-y-auto outline-none"
+            class="inputCopy group-hover:scale-95 bg-[var(--secondary)] w-full pl-5 py-3 pr-10 rounded-lg mb-3 inline-block cursor-pointer overflow-y-auto outline-none"
             value="francis.cloydm@gmail.com"
+            disabled
           />
           <div
-            class="iconClip absolute right-1 top-1/2 -translate-y-[40%] px-2 bg-[var(--secondary)]"
+            class="iconClip group-hover:scale-75 group-hover:rounded-full transition-all group-hover:p-0 absolute right-1 top-1/2 -translate-y-[35%] px-2 bg-[var(--secondary)]"
           >
             <!--?xml version="1.0" encoding="utf-8"?--><!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
             <svg
-              class="h-8 w-8 bg-[var(--primary)] p-1 rounded cursor-pointer"
+              class="h-8 w-8 group-hover:scale-150 bg-[var(--primary)] p-1 rounded cursor-pointer shadow-xl"
               viewBox="0 0 24 24"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -90,6 +92,9 @@ if (Astro.request.method === "POST") {
         <form
           class="contact-form bg-[var(--secondary)] rounded px-5 py-8 relative overflow-hidden"
           method="POST"
+          onsubmit="
+          handleSubmit()
+          "
         >
           <span
             class="absolute -top-52 -right-16 -z-1 inline-block text-[rgba(102,104,116,0.1)] text-[20rem] rotate-[24deg]"
@@ -193,20 +198,21 @@ if (Astro.request.method === "POST") {
 </style>
 
 <script>
-  const input = document.querySelector(".inputCopy");
-  const iconClip = document.querySelector(".iconClip");
+  const inputCopy = document.querySelectorAll(".inputCopy");
+  const iconClip = Array.from(document.querySelectorAll(".iconClip"));
 
-  function myFunc() {
-    // Select the text field
-    input.select();
-    input.setSelectionRange(0, 99999); // For mobile devices
+  iconClip.forEach((item, i) =>
+    item.addEventListener("click", function () {
+      // Select the text field
+      const item = inputCopy[i];
 
-    // Copy the text inside the text field
-    navigator.clipboard.writeText(input.value);
+      item.select();
+      item.setSelectionRange(0, 99999); // For mobile devices
 
-    alert("Copied to clipboard");
-  }
+      // Copy the text inside the text field
+      navigator.clipboard.writeText(item.value);
 
-  input.addEventListener("click", myFunc);
-  iconClip.addEventListener("click", myFunc);
+      alert("Copied to clipboard");
+    })
+  );
 </script>
