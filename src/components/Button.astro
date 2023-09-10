@@ -22,7 +22,7 @@ const className = `uppercase cursor-pointer text-[#ffc25c] outline outline-[#ffc
     <a href={link} class={className} download={fileName}>
       <slot />
       <span class="group-hover:translate-x-1 transition-all inline-block">
-        &rarr;
+        {fileName ? <>&darr;</> : <>&rarr;</>}
       </span>
     </a>
   )
