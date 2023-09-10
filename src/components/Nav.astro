@@ -3,9 +3,11 @@ import Logo from "./Logo.astro";
 import NavLink from "./NavLink.astro";
 const pathname = Astro.url.pathname;
 const currentPath = pathname.slice(1);
+import { Debug } from "astro:components";
 ---
 
 <nav class="py-5 px-2 fixed top-0 inset-x-0 z-20">
+  <Debug answer={currentPath} />
   <div class="max-w-7xl mx-auto flex items-center justify-between">
     <Logo />
     <div class="hidden md:flex space-x-20 text-white">
