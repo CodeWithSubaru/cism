@@ -1,7 +1,7 @@
 # build output
 dist/
 README.md
-
+.vscode
 # generated types
 .astro/
 
