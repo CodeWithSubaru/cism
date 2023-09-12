@@ -13,6 +13,8 @@ const projects = [
     headerTitle: "Dealease",
     description:
       "An e-commerce website application for fishermen and fish farmers to help them market their fish products in other places using the Dealease application.",
+    githubLink: "https://github.com/CodeWithSubaru/dealease-new",
+    demoLink: "http://dealease.online/",
   },
   {
     iteration: "2",
@@ -20,6 +22,8 @@ const projects = [
     headerTitle: "Faraway",
     description:
       "A packing list application that lists all the necessary things to bring before going to your desired destination.",
+    githubLink: "https://codesandbox.io/s/faraway-87lj9v?file=/src/App.js",
+    demoLink: "https://codesandbox.io/s/faraway-87lj9v?file=/src/App.js",
   },
   {
     iteration: "3",
@@ -27,6 +31,9 @@ const projects = [
     headerTitle: "Advice App",
     description:
       "An application that randomly shows some advice using Advice Slip",
+    githubLink:
+      "https://github.com/CodeWithSubaru/style-component/tree/advice-app",
+    demoLink: "https://advice-app-by-fc.netlify.app/",
   },
   {
     iteration: "4",
@@ -34,6 +41,8 @@ const projects = [
     headerTitle: "CoffeeCode",
     description:
       "CoffeeCode was created for programmers. This website allows authors to post their knowledge about the latest trends in programming",
+    githubLink: "https://github.com/CodeWithSubaru/coffeecode",
+    demoLink: "http://coffeecode.epizy.com/?i=1",
   },
 ];
 ---
@@ -63,6 +72,8 @@ const projects = [
               yearCreatedAt={project.yearCreatedAt}
               projectHeaderTitle={project.headerTitle}
               projectDescription={project.description}
+              githubLink={project.githubLink}
+              demoLink={project.demoLink}
             />
           ))
         }

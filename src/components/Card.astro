@@ -9,10 +9,18 @@ interface Props {
   yearCreatedAt: string;
   projectHeaderTitle: string;
   projectDescription: string;
+  githubLink: string;
+  demoLink: string;
 }
 
-const { projectHeaderTitle, yearCreatedAt, iteration, projectDescription } =
-  Astro.props;
+const {
+  projectHeaderTitle,
+  yearCreatedAt,
+  iteration,
+  projectDescription,
+  githubLink,
+  demoLink,
+} = Astro.props;
 ---
 
 <div
@@ -45,13 +53,13 @@ const { projectHeaderTitle, yearCreatedAt, iteration, projectDescription } =
       <div class="flex space-x-10">
         <a
           target="_blank"
-          href="github.com"
+          href={githubLink}
           class="hover:underline hover:underline-offset-2 cursor-pointer opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all text-[#ffc25c]"
           >Github <span class="inline-block -rotate-45">-></span></a
         >
         <a
           target="_blank"
-          href="github.com"
+          href={demoLink}
           class="hover:underline hover:underline-offset-2 cursor-pointer opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all text-[#ffc25c]"
           >Demo <span class="inline-block -rotate-45">-></span></a
         >
