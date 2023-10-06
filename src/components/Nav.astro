@@ -1,30 +1,17 @@
 ---
 import Logo from "./Logo.astro";
 import NavLink from "./NavLink.astro";
-const { href, pathname } = Astro.url;
-const isCurrentPath =
-  href.replace(/\/$/, "") === Astro.url.pathname.replace(/\/$/, "");
 ---
 
 <nav class="py-5 px-2 fixed top-0 inset-x-0 z-20">
   <div class="max-w-7xl mx-auto flex items-center justify-between">
     <Logo />
     <div class="hidden md:flex space-x-20 text-white">
-      <NavLink className={isCurrentPath ? "current" : ""} link="/">
-        Home
-      </NavLink>
-      <NavLink className={isCurrentPath ? "current" : ""} link="/about">
-        About
-      </NavLink>
-      <NavLink className={isCurrentPath ? "current" : ""} link="/projects">
-        Projects
-      </NavLink>
-      <NavLink className={isCurrentPath ? "current" : ""} link="/skills">
-        Skills
-      </NavLink>
-      <NavLink className={isCurrentPath ? "current" : ""} link="/contact">
-        Contact Me
-      </NavLink>
+      <NavLink link="/">Home</NavLink>
+      <NavLink link="/about">About</NavLink>
+      <NavLink link="/projects">Projects</NavLink>
+      <NavLink link="/skills">Skills</NavLink>
+      <NavLink link="/contact">Contact Me</NavLink>
     </div>
 
     <!-- Mobile Nav-->
@@ -43,21 +30,11 @@ const isCurrentPath =
       class="flex flex-col justify-center items-center gap-y-10 md:hidden bg-white absolute inset-0 z-10 transition-all duration-500"
       aria-hidden="true"
     >
-      <NavLink className={isCurrentPath ? "current" : ""} link="/">
-        Home
-      </NavLink>
-      <NavLink className={isCurrentPath ? "current" : ""} link="/about">
-        About
-      </NavLink>
-      <NavLink className={isCurrentPath ? "current" : ""} link="/projects">
-        Projects
-      </NavLink>
-      <NavLink className={isCurrentPath ? "current" : ""} link="/skills">
-        Skills
-      </NavLink>
-      <NavLink className={isCurrentPath ? "current" : ""} link="/contact">
-        Contact Me
-      </NavLink>
+      <NavLink link="/">Home</NavLink>
+      <NavLink link="/about">About</NavLink>
+      <NavLink link="/projects">Projects</NavLink>
+      <NavLink link="/skills">Skills</NavLink>
+      <NavLink link="/contact">Contact Me</NavLink>
     </div>
   </div>
 </nav>

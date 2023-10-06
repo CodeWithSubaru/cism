@@ -1,12 +1,15 @@
 ---
 interface Props {
   link: string;
-  className: string;
+  className?: string;
 }
 const { link, className } = Astro.props;
+const { pathname } = Astro.url;
+
+const isActive = link === pathname || link === pathname.replace(/\/$/, "");
 ---
 
-<a href={link} class={className}>
+<a href={link} class:list={{ current: isActive }}>
   <slot />
 </a>
 
