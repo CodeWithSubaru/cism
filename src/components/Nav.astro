@@ -1,39 +1,28 @@
 ---
 import Logo from "./Logo.astro";
 import NavLink from "./NavLink.astro";
-const pathname = Astro.url.pathname;
-const currentPath = pathname.slice(1);
+const { href, pathname } = Astro.url;
+const isCurrentPath =
+  href.replace(/\/$/, "") === Astro.url.pathname.replace(/\/$/, "");
 ---
 
 <nav class="py-5 px-2 fixed top-0 inset-x-0 z-20">
   <div class="max-w-7xl mx-auto flex items-center justify-between">
     <Logo />
     <div class="hidden md:flex space-x-20 text-white">
-      <NavLink className={currentPath === "" ? "current" : ""} link="/">
+      <NavLink className={isCurrentPath ? "current" : ""} link="/">
         Home
       </NavLink>
-      <NavLink
-        className={currentPath === "about" ? "current" : ""}
-        link="about"
-      >
+      <NavLink className={isCurrentPath ? "current" : ""} link="/about">
         About
       </NavLink>
-      <NavLink
-        className={currentPath === "projects" ? "current" : ""}
-        link="projects"
-      >
+      <NavLink className={isCurrentPath ? "current" : ""} link="/projects">
         Projects
       </NavLink>
-      <NavLink
-        className={currentPath === "skills" ? "current" : ""}
-        link="skills"
-      >
+      <NavLink className={isCurrentPath ? "current" : ""} link="/skills">
         Skills
       </NavLink>
-      <NavLink
-        className={currentPath === "contact" ? "current" : ""}
-        link="contact"
-      >
+      <NavLink className={isCurrentPath ? "current" : ""} link="/contact">
         Contact Me
       </NavLink>
     </div>
@@ -54,31 +43,19 @@ const currentPath = pathname.slice(1);
       class="flex flex-col justify-center items-center gap-y-10 md:hidden bg-white absolute inset-0 z-10 transition-all duration-500"
       aria-hidden="true"
     >
-      <NavLink className={currentPath === "" ? "current" : ""} link="/">
+      <NavLink className={isCurrentPath ? "current" : ""} link="/">
         Home
       </NavLink>
-      <NavLink
-        className={currentPath === "about" ? "current" : ""}
-        link="/about"
-      >
+      <NavLink className={isCurrentPath ? "current" : ""} link="/about">
         About
       </NavLink>
-      <NavLink
-        className={currentPath === "projects" ? "current" : ""}
-        link="/projects"
-      >
+      <NavLink className={isCurrentPath ? "current" : ""} link="/projects">
         Projects
       </NavLink>
-      <NavLink
-        className={currentPath === "skills" ? "current" : ""}
-        link="/skills"
-      >
+      <NavLink className={isCurrentPath ? "current" : ""} link="/skills">
         Skills
       </NavLink>
-      <NavLink
-        className={currentPath === "contact" ? "current" : ""}
-        link="/contact"
-      >
+      <NavLink className={isCurrentPath ? "current" : ""} link="/contact">
         Contact Me
       </NavLink>
     </div>
